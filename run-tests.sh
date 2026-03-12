@@ -51,10 +51,15 @@ lint_shellcheck() {
     find . -name "*.sh" -exec shellcheck {} \+
 }
 
+lint_yamllint() {
+    yamllint .
+}
+
 all() {
     lint_commitlint
     lint_jsonlint
     lint_shellcheck
+    lint_yamllint
 }
 
 help() {
@@ -65,6 +70,7 @@ help() {
     echo "  --lint-commitlint  Check linting of commit messages"
     echo "  --lint-jsonlint    Check linting of JSON files"
     echo "  --lint-shellcheck  Check linting of shell scripts"
+    echo "  --lint-yamllint    Check linting of YAML files"
 }
 
 if [ $# -eq 0 ]; then
@@ -79,5 +85,6 @@ case $arg in
 --lint-commitlint) lint_commitlint "$@" ;;
 --lint-jsonlint) lint_jsonlint ;;
 --lint-shellcheck) lint_shellcheck ;;
+--lint-yamllint) lint_yamllint ;;
 *) echo "[ERROR] Invalid argument '$arg'. Exiting." && help && exit 1 ;;
 esac
