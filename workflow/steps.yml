@@ -16,13 +16,13 @@ eventselection:
   publisher:
     publisher_type: interpolated-pub
     publish:
-      histfile: '{submitDir}/hist-sample.root'
+      histfile: "{submitDir}/hist-sample.root"
   environment:
-    environment_type: 'docker-encapsulated'
+    environment_type: "docker-encapsulated"
     image: docker.io/reanahub/reana-demo-atlas-recast-eventselection
-    imagetag: '1.0'
+    imagetag: "1.0"
     resources:
-      - kubernetes_memory_limit: '256Mi'
+      - kubernetes_memory_limit: "256Mi"
       - kubernetes_uid: 500
 
 statanalysis:
@@ -41,14 +41,14 @@ statanalysis:
   publisher:
     publisher_type: interpolated-pub
     publish:
-      pre:    '{resultdir}/pre.png'
-      post:   '{resultdir}/post.png'
-      limit:  '{resultdir}/limit_data.json'
-      nomsig: '{resultdir}/limit_data_nomsignal.json'
+      pre: "{resultdir}/pre.png"
+      post: "{resultdir}/post.png"
+      limit: "{resultdir}/limit_data.json"
+      nomsig: "{resultdir}/limit_data_nomsignal.json"
   environment:
-    environment_type: 'docker-encapsulated'
+    environment_type: "docker-encapsulated"
     image: docker.io/reanahub/reana-demo-atlas-recast-statanalysis
-    imagetag: '1.0'
+    imagetag: "1.0"
     resources:
-      - kubernetes_memory_limit: '256Mi'
+      - kubernetes_memory_limit: "256Mi"
       - kubernetes_uid: 500

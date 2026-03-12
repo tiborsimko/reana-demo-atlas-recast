@@ -19,19 +19,19 @@ stages:
       scheduler_type: singlestep-stage
       parameters:
         name: recast_sample
-        did: {step: init, output: did}
-        xsec_in_pb: {step: init, output: xsec_in_pb}
-        dxaod_file: {step: init, output: dxaod_file}
+        did: { step: init, output: did }
+        xsec_in_pb: { step: init, output: xsec_in_pb }
+        dxaod_file: { step: init, output: dxaod_file }
         lumi_in_ifb: 30.0
-        submitDir: '{workdir}/submitDir'
-      step: {$ref: 'workflow/steps.yml#/eventselection'}
+        submitDir: "{workdir}/submitDir"
+      step: { $ref: "workflow/steps.yml#/eventselection" }
   - name: statanalysis
     dependencies: [eventselection]
     scheduler:
       scheduler_type: singlestep-stage
       parameters:
         data_file: /code/data/data.root
-        signal_file: {step: eventselection, output: histfile}
+        signal_file: { step: eventselection, output: histfile }
         background_file: /code/data/background.root
-        resultdir: '{workdir}/fitresults'
-      step: {$ref: 'workflow/steps.yml#/statanalysis'}
+        resultdir: "{workdir}/fitresults"
+      step: { $ref: "workflow/steps.yml#/statanalysis" }
